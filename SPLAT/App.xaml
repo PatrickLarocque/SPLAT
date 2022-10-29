@@ -1,0 +1,24 @@
+﻿<Application x:Class="SPLAT.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SPLAT"
+             xmlns:viewModel="clr-namespace:SPLAT.MVVM.ViewModel"
+             xmlns:view="clr-namespace:SPLAT.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Theme/NavBarButton.xaml"/>
+                <ResourceDictionary Source="/Theme/SearchBarTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:DashboardViewModel}">
+                <view:DashboardView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:TicketsViewModel}">
+                <view:TicketsView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
