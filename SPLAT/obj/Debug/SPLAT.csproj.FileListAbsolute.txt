@@ -54,3 +54,5 @@ C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\obj\Debug\SPLAT.exe
 C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\obj\Debug\SPLAT.pdb
 C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\obj\Debug\MVVM\View\LoginView.g.cs
 C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\obj\Debug\MVVM\View\LoginView.baml
+C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\obj\Debug\CustomControls\BindablePasswordBox.g.cs
+C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\obj\Debug\CustomControls\BindablePasswordBox.baml

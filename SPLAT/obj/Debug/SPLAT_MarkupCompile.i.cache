@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\App.xaml
-61305945573
+71719427501
 
-14-761793908
-14-1106302918
-MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\LoginView.xaml;MVVM\View\TicketsView.xaml;Theme\NavBarButton.xaml;Theme\SearchBarTheme.xaml;
+19-387806182
+119524901875
+CustomControls\BindablePasswordBox.xaml;MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\LoginView.xaml;MVVM\View\TicketsView.xaml;Theme\NavBarButton.xaml;Theme\SearchBarTheme.xaml;
 
-True
+False
 

@@ -7,10 +7,10 @@ using System.Windows.Input;
 
 namespace SPLAT.Core
 {
-    internal class RelayCommand : ICommand
+    internal class RelayCommand : ICommand    ////aka viewmodelCommand
     {
-        private Action<object> _execute;
-        private Func<object, bool> _canExecute;
+        private Action<object> _execute; // fields
+        private Func<object, bool> _canExecute; //predicate
 
         public event EventHandler CanExecuteChanged
         {
@@ -18,11 +18,21 @@ namespace SPLAT.Core
             remove { CommandManager.RequerySuggested -= value; }
         }
 
+        //constructor without validation predicate
+        public RelayCommand(Action<object> execute)
+        {
+            _execute = execute;
+            _canExecute = null;
+        }
+
+
+        //constructor with validation predicate
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
         }
+
 
         public bool CanExecute(object parameter)
         {
