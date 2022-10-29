@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:SPLAT"
              xmlns:viewModel="clr-namespace:SPLAT.MVVM.ViewModel"
              xmlns:view="clr-namespace:SPLAT.MVVM.View"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MVVM/View/LoginView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Patrick Larocque\source\repos\SPLAT\SPLAT\obj\Debug\
+C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\obj\Debug\
 SPLAT
 none
 false
 DEBUG;TRACE
-C:\Users\Patrick Larocque\source\repos\SPLAT\SPLAT\App.xaml
-52066444688
+C:\Users\Carolina\Desktop\App Developement\SPLAT\SPLAT\App.xaml
+61305945573
 
-121859562144
-141284837376
-MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\TicketsView.xaml;Theme\NavBarButton.xaml;Theme\SearchBarTheme.xaml;
+131611395267
+14-1106302918
+MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\LoginView.xaml;MVVM\View\TicketsView.xaml;Theme\NavBarButton.xaml;Theme\SearchBarTheme.xaml;
 
 False
 
