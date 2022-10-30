@@ -16,7 +16,7 @@ namespace SPLAT.MVVM.ViewModel
         private string _errorMessage;
         private bool _isViewVisible = true;
 
-
+    
         //properties
         public string Username 
             { get => _username; set

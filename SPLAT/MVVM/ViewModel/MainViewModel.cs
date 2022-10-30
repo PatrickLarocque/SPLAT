@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SPLAT.MVVM.ViewModel
 {
@@ -43,6 +44,25 @@ namespace SPLAT.MVVM.ViewModel
                 CurrentView = TicketsViewModel;
             });
 
+        }
+
+        private RelayCommand navigateLoginCommand;
+
+        public ICommand NavigateLoginCommand
+        {
+            get
+            {
+                if (navigateLoginCommand == null)
+                {
+                    navigateLoginCommand = new RelayCommand(NavigateLogin);
+                }
+
+                return navigateLoginCommand;
+            }
+        }
+
+        private void NavigateLogin(object commandParameter)
+        {
         }
     }
 }

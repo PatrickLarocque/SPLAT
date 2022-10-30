@@ -9,8 +9,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1100"
         WindowStyle="None"
-        ResizeMode="CanResizeWithGrip"
+         ResizeMode="NoResize"
         Background="Transparent"
+        MouseDown="Window_MouseDown"
         AllowsTransparency="True">
 
     <Window.DataContext>
@@ -20,19 +21,91 @@
     <Border Background="#212936"
             CornerRadius="10">
         <Grid>
+
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="65"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnMinimize"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#3b4960"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#593b60"/>
 
-            <Image MaxWidth="145" Source="/Assets/Images/Logo/png/logo-white-no-background.png"/>
-            
-            <TextBox Grid.Row="0" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#3b4960"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#593b60"/>
+
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </Grid>
+
+            <Image Grid.Row="1" Grid.Column="0"  MaxWidth="145" Source="/Assets/Images/Logo/png/logo-white-no-background.png"/>
+
+            <TextBox Grid.Row="1"  
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
@@ -42,13 +115,13 @@
 
 
 
-            <Grid Grid.Row="1" Grid.Column="0">
+            <Grid Grid.Row="2"  Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="65"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="1">
+                <StackPanel Grid.Row="2" >
                     <RadioButton Content="Dashboard"
                                  Height="40"
                                  FontSize="16"
@@ -80,13 +153,13 @@
                 </StackPanel>
             </Grid>
 
-            <ContentControl Grid.Row="1"
+            <ContentControl Grid.Row="2" 
                             Grid.Column="1"
                             Margin="0" 
                             Content="{Binding CurrentView}"/>
-
 
         </Grid>
 
     </Border>
 </Window>
+
