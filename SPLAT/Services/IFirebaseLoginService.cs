@@ -12,7 +12,7 @@ namespace SPLAT.Services
 {
     internal interface IFirebaseLoginService
     {
-        [Post("v1/accounts:signInWithPassword")]
+        [Post("/v1/accounts:signInWithPassword")]
         Task<LoginResponse> Login(LoginRequest loginRequest);
 
     }

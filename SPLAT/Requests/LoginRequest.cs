@@ -12,7 +12,7 @@ namespace SPLAT.Requests
 
         public string Password { get; set; }
 
-        public string ReturnSecureToken { get; set; }
+        public bool ReturnSecureToken { get; set; }
 
         
     }

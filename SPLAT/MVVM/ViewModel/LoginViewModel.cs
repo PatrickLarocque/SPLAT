@@ -1,5 +1,12 @@
-﻿using SPLAT.Core;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Refit;
+using SPLAT.Core;
+using SPLAT.Extensions;
 using SPLAT.MVVM.View;
+using SPLAT.Requests;
+using SPLAT.Responses;
+using SPLAT.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,21 +15,24 @@ using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Input;
+using LoginView = SPLAT.MVVM.View.LoginView;
 
 namespace SPLAT.MVVM.ViewModel
 {
     public class LoginViewModel : ObservableObject
     {
-        private string _username;
-        private SecureString _password;
+        static readonly string apiKey = "AIzaSyBtDODfvO9X3TGMXz1sRiNqhDjLL7NOJSE";
+        private string _email;
+        private string _password;
         private string _errorMessage;
         private bool _isViewVisible = true;
 
 
         //properties
-        public string Username { get => _username; set { _username = value; OnPropertyChanged(nameof(Username)); } }
-        public SecureString Password { get => _password; set { _password = value; OnPropertyChanged(nameof(Password)); } }
+        public string Email { get => _email; set { _email = value; OnPropertyChanged(nameof(Email)); } }
+        public string Password { get => _password; set { _password = value; OnPropertyChanged(nameof(Password)); } }
         public string ErrorMessage { get => _errorMessage; set { _errorMessage = value; OnPropertyChanged(nameof(ErrorMessage)); } }
         public bool IsVisible { get => _isViewVisible; set { _isViewVisible = value; OnPropertyChanged(nameof(IsVisible)); } }
 
@@ -43,7 +53,7 @@ namespace SPLAT.MVVM.ViewModel
         private bool CanExecuteLoginCommand(object arg)
         {
             bool validData;
-            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 3 || Password == null || Password.Length < 3)
+            if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3 || Password == null || Password.Length < 3)
                 validData = false;
             else
                 validData = true;
@@ -52,7 +62,20 @@ namespace SPLAT.MVVM.ViewModel
         }
         private void ExecuteLoginCommand(object obj)
         {
-            IsVisible = false;
+            try
+            {
+                _ = LoginWithFirebase();
+                IsVisible = false;
+                var loginView = new LoginView();
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+                loginView.Close();
+            }
+            catch (ApiException ex)
+            {
+            }
+            
+
         }
 
         private void ExecuteRecoverPassCommand(string username, string email)
@@ -60,5 +83,71 @@ namespace SPLAT.MVVM.ViewModel
             throw new NotImplementedException();
         }
 
+
+
+        public async Task RegisterWithFirebase()
+        {
+            try
+            {
+                IHost host = Host.CreateDefaultBuilder()
+                    .AddFirebaseAuthenticationSDK(apiKey)
+                    .Build();
+                IFirebaseRegistrationService registrationService = host.Services.GetRequiredService<IFirebaseRegistrationService>();
+                RegistrationResponse registrationResponse = await registrationService.Register(new RegistrationRequest
+                {
+                    Email = Email,
+                    Password = Password,
+                    ReturnSecureToken = true
+                });
+                host.Dispose();
+            }
+            catch (ApiException ex)
+            {
+                await ex.GetContentAsAsync<string>();
+            }
+        }
+
+        public async Task LoginWithFirebase()
+        {
+            try
+            {
+                IHost host = Host.CreateDefaultBuilder()
+                    .AddFirebaseAuthenticationSDK(apiKey)
+                    .Build();
+                IFirebaseLoginService loginService = host.Services.GetRequiredService<IFirebaseLoginService>();
+                LoginResponse loginResponse = await loginService.Login(new LoginRequest
+                {
+                    Email = Email,
+                    Password = Password,
+                    ReturnSecureToken = true
+                });
+                host.Dispose();
+            }
+            catch (ApiException ex)
+            {
+                await ex.GetContentAsAsync<string>();
+            }
+        }
+
+        public async Task RefreshFirebaseToken()
+        {
+            try
+            {
+                IHost host = Host.CreateDefaultBuilder()
+                    .AddFirebaseAuthenticationSDK(apiKey)
+                    .Build();
+                IFirebaseRefreshService refreshService = host.Services.GetRequiredService<IFirebaseRefreshService>();
+                RefreshResponse refreshResponse = await refreshService.Refresh(new RefreshRequest
+                {
+
+                    //RefreshToken = loginResponse.RefreshToken
+                });
+                host.Dispose();
+            }
+            catch (ApiException ex)
+            {
+                await ex.GetContentAsAsync<string>();
+            }
+        }
     }
 }

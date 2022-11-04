@@ -9,9 +9,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1100"
         WindowStyle="None"
-         ResizeMode="NoResize"
+        ResizeMode="NoResize"
         Background="Transparent"
         MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen"
         AllowsTransparency="True">
 
     <Window.DataContext>

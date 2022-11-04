@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\FirebaseAuthenticationSDKHostBuilder.cs" />
     <Compile Include="Http\FirebaseAPIKeyHttpMessageHandler.cs" />
     <Compile Include="Requests\LoginRequest.cs" />
     <Compile Include="Requests\RefreshRequest.cs" />
