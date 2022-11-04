@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Patrick Larocque\\source\\repos\\SPLAT\\SPLAT\\SPLAT.csproj": {}
+    "C:\\Users\\Carolina\\Desktop\\Nov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Patrick Larocque\\source\\repos\\SPLAT\\SPLAT\\SPLAT.csproj": {
+    "C:\\Users\\Carolina\\Desktop\\Nov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Patrick Larocque\\source\\repos\\SPLAT\\SPLAT\\SPLAT.csproj",
+        "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\Nov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj",
         "projectName": "SPLAT",
-        "projectPath": "C:\\Users\\Patrick Larocque\\source\\repos\\SPLAT\\SPLAT\\SPLAT.csproj",
-        "packagesPath": "C:\\Users\\Patrick Larocque\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Patrick Larocque\\source\\repos\\SPLAT\\SPLAT\\obj\\",
+        "projectPath": "C:\\Users\\Carolina\\Desktop\\Nov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj",
+        "packagesPath": "C:\\Users\\Carolina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Carolina\\Desktop\\Nov4Patrick\\SPLAT\\SPLAT\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Patrick Larocque\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Carolina\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,6 +38,14 @@
       "frameworks": {
         "net48": {
           "dependencies": {
+            "FireSharp": {
+              "target": "Package",
+              "version": "[2.0.4, )"
+            },
+            "FirebaseDatabase.net": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "FontAwesome.WPF": {
               "target": "Package",
               "version": "[4.7.0.9, )"
