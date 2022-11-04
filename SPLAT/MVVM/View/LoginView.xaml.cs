@@ -45,6 +45,7 @@ namespace SPLAT.MVVM.View
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
         
+
         }
 
         private void txtUser_TextChanged(object sender, TextChangedEventArgs e)

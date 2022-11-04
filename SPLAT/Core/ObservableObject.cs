@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SPLAT.Core
 {
-    public abstract class ObservableObject : INotifyPropertyChanged //// aka ViewModelBase
+    public abstract class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

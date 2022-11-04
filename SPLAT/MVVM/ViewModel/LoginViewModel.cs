@@ -1,7 +1,10 @@
 ﻿using SPLAT.Core;
+using SPLAT.MVVM.View;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,22 +19,15 @@ namespace SPLAT.MVVM.ViewModel
         private string _errorMessage;
         private bool _isViewVisible = true;
 
-    
+
         //properties
-        public string Username 
-            { get => _username; set
-            {
-                _username = value;
-                OnPropertyChanged(nameof(Username));
-            }
-        }
+        public string Username { get => _username; set { _username = value; OnPropertyChanged(nameof(Username)); } }
         public SecureString Password { get => _password; set { _password = value; OnPropertyChanged(nameof(Password)); } }
         public string ErrorMessage { get => _errorMessage; set { _errorMessage = value; OnPropertyChanged(nameof(ErrorMessage)); } }
-        public bool IsViewVisible { get => _isViewVisible; set { _isViewVisible = value; OnPropertyChanged(nameof(IsViewVisible)); } }
+        public bool IsVisible { get => _isViewVisible; set { _isViewVisible = value; OnPropertyChanged(nameof(IsVisible)); } }
 
 
-        ///Commands 
-        ///
+        //Commands 
         public ICommand LoginCommand { get; }
         public ICommand RecoverPasswordCommand { get; }
         public ICommand ShowPasswordCommand { get; }
@@ -47,8 +43,7 @@ namespace SPLAT.MVVM.ViewModel
         private bool CanExecuteLoginCommand(object arg)
         {
             bool validData;
-            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 3 ||
-                Password==null || Password.Length < 3)
+            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 3 || Password == null || Password.Length < 3)
                 validData = false;
             else
                 validData = true;
@@ -57,11 +52,13 @@ namespace SPLAT.MVVM.ViewModel
         }
         private void ExecuteLoginCommand(object obj)
         {
-            throw new NotImplementedException();
+            IsVisible = false;
         }
-        private void ExecuteRecoverPassCommand(string username,string email)
+
+        private void ExecuteRecoverPassCommand(string username, string email)
         {
             throw new NotImplementedException();
         }
+
     }
 }

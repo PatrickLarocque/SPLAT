@@ -63,6 +63,7 @@ namespace SPLAT.MVVM.ViewModel
 
         private void NavigateLogin(object commandParameter)
         {
+
         }
     }
 }

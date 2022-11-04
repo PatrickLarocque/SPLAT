@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Carolina\Desktop\SPLAT GIT\SPLAT\SPLAT\obj\Debug\
+C:\Users\Patrick Larocque\source\repos\SPLAT\SPLAT\obj\Debug\
 SPLAT
 none
 false
 DEBUG;TRACE
-C:\Users\Carolina\Desktop\SPLAT GIT\SPLAT\SPLAT\App.xaml
+C:\Users\Patrick Larocque\source\repos\SPLAT\SPLAT\App.xaml
 8-1158981716
 
-20-1505766883
-119384746468
+30-1998446048
+161-2058983317
 CustomControls\BindablePasswordBox.xaml;MainWindow.xaml;MVVM\View\DashboardView.xaml;MVVM\View\LoginView.xaml;MVVM\View\RegisterView.xaml;MVVM\View\TicketsView.xaml;Theme\NavBarButton.xaml;Theme\SearchBarTheme.xaml;
 
 False

@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SPLAT.MVVM.View"
-        xmlns:viewModel="clr-namespace:SPLAT.MVVM.ViewModel" xmlns:customcontrols="clr-namespace:SPLAT.CustomControls"
+        xmlns:viewModel="clr-namespace:SPLAT.MVVM.ViewModel" 
+        xmlns:customcontrols="clr-namespace:SPLAT.CustomControls"
         mc:Ignorable="d"
         Title="LoginView" Height="550" Width="800"
         WindowStyle="None"
@@ -24,9 +25,8 @@
     </Window.Resources>
     
     <Window.Visibility>
-        <Binding Path="IsViewVisibile" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
+        <Binding Path="IsVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
-    
     
     
     <Border Background="#212936"
