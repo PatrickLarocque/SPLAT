@@ -20,12 +20,15 @@ namespace SPLAT.MVVM.ViewModel
         private string _description;
         private string _user_id;
         private string _Name;
+        private DateTime _created;
         private TicketModel _selectedTicket;
         private List<TicketModel> _tickets = new List<TicketModel>();
         private List<string> _strTickets = new List<string>();
         private ObservableCollection<string> _stringCollection = new ObservableCollection<string>();
         private ICommand _addTicketCommand;
         private ICommand _deleteTicketCommand;
+        private ICommand _editTicketCommand;
+        private ICommand _updateTicketCommand;
         private ICommand _showTicketCommand;
         private ObservableCollection<TicketModel> _dbTickets = new ObservableCollection<TicketModel>();
         private delegate ObservableCollection<string> TicketDelegate(IReadOnlyCollection<FirebaseObject<TicketModel>> dbTickets);
@@ -48,6 +51,22 @@ namespace SPLAT.MVVM.ViewModel
                 }
             }
         }
+
+
+        public DateTime Created
+        {
+            get => _created; set
+            {
+                if (value != _created)
+                {
+                    _created = value;
+                    OnPropertyChanged("Created");
+                }
+            }
+
+        }
+
+
         public string Description
         {
             get => _description; set
@@ -173,8 +192,31 @@ namespace SPLAT.MVVM.ViewModel
             }
         }
 
+        public ICommand EditTicketCommand
+        {
+            get
+            {
+                if (_editTicketCommand == null)
+                {
+                    _editTicketCommand = new RelayCommand(
+                        param => EditTicket());
+                }
+                return _editTicketCommand;
+            }
+        }
 
-
+        public ICommand UpdateTicketCommand
+        {
+            get
+            {
+                if (_updateTicketCommand == null)
+                {
+                    _updateTicketCommand = new RelayCommand(
+                        param => UpdateTicket());
+                }
+                return _updateTicketCommand;
+            }
+        }
         public ICommand ShowTicketCommand
         {
             get
@@ -194,6 +236,7 @@ namespace SPLAT.MVVM.ViewModel
             get { return _fbclient; }
         }
 
+        
 
         public TicketsViewModel()
         {
@@ -215,24 +258,77 @@ namespace SPLAT.MVVM.ViewModel
 
         private async void AddTicket()
         {
-            TicketModel newTicket = new TicketModel();
-            newTicket.Title = Title;
-            Title = string.Empty;
-            newTicket.Description = Description;
-            Description = string.Empty;
-            newTicket.User_id = User_id;
-            User_id = string.Empty;
-            newTicket.Name = Name;
-            Name = string.Empty;
+          
+             TicketModel newTicket = new TicketModel();
+             newTicket.Title = Title;
+             Title = string.Empty;
+             newTicket.Description = Description;
+             Description = string.Empty;
+             newTicket.User_id = User_id;
+             User_id = string.Empty;
+             newTicket.Name = Name;
+             Name = string.Empty;
+             newTicket.Created = DateTime.Today;
 
 
-            await FBClient
-                .Child("Tickets")
-                .PostAsync(newTicket, false);
+            await FBClient.Child("Tickets").PostAsync(newTicket,false);
             strTickets.Add("one more");
             GetTickets();
+
+
+
+         /*    await FBClient
+                 .Child("Tickets")
+                 .PostAsync(newTicket, false);
+             strTickets.Add("one more");
+             GetTickets();
+           */ 
         }
-        private async void DeleteTicket()
+
+
+
+        DateTime selectedTicketEditDate;
+        String selectedKey;
+        public async void EditTicket()
+        {
+
+            if (SelectedTicket != null && SelectedTicket.Key != null)
+            {
+                Title = SelectedTicket.Title;
+                Description = SelectedTicket.Description;
+                User_id = SelectedTicket.User_id;
+                Name = SelectedTicket.Name;
+                selectedKey = SelectedTicket.Key;
+                selectedTicketEditDate = SelectedTicket.Created;
+                }
+
+        }
+        private async void UpdateTicket()
+        {
+
+
+            TicketModel existTicket = new TicketModel();
+            existTicket.Title = Title;
+            Title = string.Empty;
+            existTicket.Description = Description;
+            Description = string.Empty;
+            existTicket.User_id = User_id;
+            User_id = string.Empty;
+            existTicket.Name = Name;
+            Name = string.Empty;
+            existTicket.Created = selectedTicketEditDate;
+
+            await FBClient
+                 .Child("Tickets").Child(selectedKey)
+                 .DeleteAsync();
+            await FBClient.Child("Tickets").Child(selectedKey).PutAsync(existTicket);
+            GetTickets();            
+     
+        }
+
+
+
+            private async void DeleteTicket()
         {
             if (SelectedTicket != null && SelectedTicket.Key != null)
             {
@@ -253,11 +349,12 @@ namespace SPLAT.MVVM.ViewModel
                     {
                         DbTickets.Add(new TicketModel
                         {
-                            Key = e.Key,
+                            Key= e.Key,
+                            Created = e.Object.Created,
                             Title = e.Object.Title,
                             Description = e.Object.Description,
                             User_id = e.Object.User_id,
-                            Name = e.Object.Name
+                            Name = e.Object.Name                            
                         });
                     });
                 }

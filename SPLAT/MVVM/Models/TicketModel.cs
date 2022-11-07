@@ -15,6 +15,7 @@ namespace SPLAT.MVVM.Models
             private string _description;
             private string _user_id;
             private string _Name;
+            private DateTime _created;
 
             public string Key
             {
@@ -27,6 +28,24 @@ namespace SPLAT.MVVM.Models
                     }
                 }
             }
+
+            public DateTime Created
+             { get => _created; set
+            {
+                if (value != _created)
+                {
+                    _created = value;
+                    OnPropertyChanged("Created");
+                }
+            }
+        
+        
+        
+        
+        
+        }
+
+
             public string Title
             {
                 get => _title; set

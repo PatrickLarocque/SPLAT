@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8Zh/NSen1hVFy9xZJSKzSYQPE9gWxamkH0bJp/o+eONJa4trnS13Qw+G82ngRw4nZwqM7Q1c06SsSpr0/pW5bw==",
+  "dgSpecHash": "g5cy0wQjfEIIN9Ajf4EsOCLKZc5ETtYNiI3hkFZxl76FYBLrBWNzloTdfBxr9DqGfdTyvEG2TpvW3TTQm3EsbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\Nov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj",
+  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\VERIFIEDNov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Carolina\\.nuget\\packages\\firebasedatabase.net\\4.1.0\\firebasedatabase.net.4.1.0.nupkg.sha512",
     "C:\\Users\\Carolina\\.nuget\\packages\\firesharp\\2.0.4\\firesharp.2.0.4.nupkg.sha512",
