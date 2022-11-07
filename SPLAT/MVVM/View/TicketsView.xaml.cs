@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPLAT.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,12 @@ namespace SPLAT.MVVM.View
     {
         public TicketsView()
         {
+            DataContext = new TicketsViewModel();
             InitializeComponent();
+        }
+        private void ShowBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

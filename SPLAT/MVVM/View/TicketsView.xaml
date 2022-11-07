@@ -3,12 +3,414 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SPLAT.MVVM.View"
-             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:SPLAT.MVVM.View" xmlns:viewmodel="clr-namespace:SPLAT.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:TicketsViewModel}"
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="This is the tickets view"
+    <Border Background="#212936"
+            CornerRadius="10">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" >
+              
+                </ColumnDefinition>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="10,50,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="30" />
+                    <RowDefinition Height="Auto" MinHeight="10" />
+                    <RowDefinition Height="Auto" MinHeight="30" />
+                    <RowDefinition Height="Auto" MinHeight="10" />
+                    <RowDefinition Height="Auto" MinHeight="30" />
+                    <RowDefinition Height="Auto" MinHeight="10" />
+                    <RowDefinition Height="Auto" MinHeight="30" />
+                    <RowDefinition Height="Auto" MinHeight="10" />
+                    <RowDefinition Height="Auto" MinHeight="30" />
+                    <RowDefinition Height="Auto" MinHeight="40" />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TitleLabel" Foreground="White" Text="Title" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" />
+                <TextBox Grid.Row="1"
+                         Grid.Column="0"
+                         x:Name="TitleTBox"
+                         Text="{Binding Title}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,5,0,0"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Background="Transparent"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,5">
+                </TextBox>
+                <TextBlock Grid.Row="2" Grid.Column="0" x:Name="DescriptionLabel" Foreground="White" Text="Description" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,1,0,0" />
+                <TextBox Grid.Row="3"
+                         Grid.Column="0"
+                         x:Name="DescripTBox"
+                         Text="{Binding Description}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,0,0,0"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Background="Transparent"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,5">
+                </TextBox>
+                <TextBlock Grid.Row="4" Grid.Column="0" 
+                           x:Name="NameLabel" Foreground="White" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,1,0,0"/>
+
+                <TextBox Grid.Row="5"
+                         Grid.Column="0"
+                         x:Name="NameTBox"
+                         Text="{Binding Name}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,0,0,0"
+                           FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Background="Transparent"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,5">
+                </TextBox>
+                <TextBlock Grid.Row="6" Grid.Column="0" x:Name="UserIdLabel" Foreground="White" Text="UserId" HorizontalAlignment="Center" Margin="0,10,0,0" />
+
+                <TextBox Grid.Row="7"
+                         Grid.Column="0"
+                         x:Name="UserIdTBox"
+                         Text="{Binding User_id}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,0,0,0"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Background="Transparent"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,5">
+                </TextBox>
+                <Grid Grid.Row="9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="AddBtn" Content="Add" Command="{Binding Path=AddTicketCommand}" Margin="0,5,0,0" Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#3b4960"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#4a3b60"/>
+
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="40"
+                                        CornerRadius="7"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Column="1" x:Name="DelBtn" Content="Delete" Command="{Binding Path=DeleteTicketCommand}" Margin="0,5,0,0" Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#3b4960"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#4a3b60"/>
+
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="40"
+                                        CornerRadius="7"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Column="2" x:Name="ShowBtn" Content="Refresh Tickets" Command="{Binding Path=ShowTicketCommand}" Margin="0,5,0,0" Click="ShowBtn_Click" Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand" >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#3b4960"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#4a3b60"/>
+
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="110" Height="40"
+                                        CornerRadius="7"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="editBtn" Content="Edit" Command="{Binding Path=EditTicketCommand}" Margin="0,5,0,0" Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#3b4960"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#4a3b60"/>
+
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="40"
+                                        CornerRadius="7"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Column="1" x:Name="UpdateBtn" Content="Update" Command="{Binding Path=UpdateTicketCommand}" Margin="0,5,0,0" Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#3b4960"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#4a3b60"/>
+
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="40"
+                                        CornerRadius="7"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <DataGrid Grid.Column="1" ColumnWidth="*" 
+                              
+                              x:Name="TLTickets"
+                              d:DataContext="{d:DesignInstance {x:Type viewmodel:TicketsViewModel}}" 
+            ItemsSource="{Binding Path=DbTickets}"
+            SelectedItem="{Binding Path=SelectedTicket}"
+                  Background="Transparent"
+                      >
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Padding" Value="0,0,0,0"/>
+                        <Setter Property="FontFamily" Value="Montserrat"/>
+                        <Setter Property="FontSize" Value="15"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                 <DataGrid.Columns>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
+            <!--  <TextBlock Text="This is the tickets view"
                        Foreground="white"
                        FontSize="32" />
-    </Grid>
+            
+            
+                                <DataGridComboBoxColumn
+                       ItemsSource="{Binding Path=Created}"
+                        />
+                    <DataGridComboBoxColumn ItemsSource="{Binding Path=Title}"
+                        />
+                    <DataGridComboBoxColumn  ItemsSource="{Binding Path=Description}"
+                        />
+                    <DataGridComboBoxColumn  ItemsSource="{Binding Path=Name}"
+                        />
+                    <DataGridComboBoxColumn ItemsSource="{Binding Path=User_id}"
+                                            />
+-->
+         <!--   <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="20" />
+                    <RowDefinition Height="Auto" MinHeight="30" />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+                    <RowDefinition Height="Auto" MinHeight="10" />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+                    <RowDefinition Height="Auto" MinHeight="10" />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+                    <RowDefinition Height="Auto" MinHeight="10" />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TitleLabel" Foreground="White" Text="Title" HorizontalAlignment="Center" Margin="0,0,0,0" />
+
+                <TextBox Grid.Row="1"
+                         Grid.Column="0"
+                         x:Name="TitleTBox"
+                         Text="{Binding Title,FallbackValue=new}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,5,0,0"
+                         FontWeight="Bold">
+                </TextBox>
+                <TextBlock Grid.Row="2" Grid.Column="0" x:Name="DescriptionLabel" Foreground="White" Text="Description" HorizontalAlignment="Center" Margin="0,10,0,0" />
+
+                <TextBox Grid.Row="3"
+                         Grid.Column="0"
+                         x:Name="DescripTBox"
+                         Text="{Binding Description,FallbackValue=desc}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,-15,0,0"
+                         FontWeight="Bold">
+                </TextBox>
+                <TextBlock Grid.Row="4" Grid.Column="0" x:Name="NameLabel" Foreground="White" Text="Name" HorizontalAlignment="Center" Margin="0,10,0,0" />
+
+                <TextBox Grid.Row="5"
+                         Grid.Column="0"
+                         x:Name="NameTBox"
+                         Text="{Binding Name}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,-15,0,0"
+                         FontWeight="Bold">
+                </TextBox>
+                <TextBlock Grid.Row="6" Grid.Column="0" x:Name="UserIdLabel" Foreground="White" Text="UserId" HorizontalAlignment="Center" Margin="0,10,0,0" />
+
+                <TextBox Grid.Row="7"
+                         Grid.Column="0"
+                         x:Name="UserIdTBox"
+                         Text="{Binding User_id}"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Margin="0,-15,0,0"
+                         FontWeight="Bold">
+                </TextBox>
+
+                    <DataGrid Grid.Column="1"
+                              Grid.Row="1"
+                                ColumnWidth="*"
+                              
+                              x:Name="TLTickets"
+                              d:DataContext="{d:DesignInstance {x:Type viewmodel:TicketsViewModel}}" 
+            ItemsSource="{Binding Path=DbTickets}"
+            SelectedItem="{Binding Path=SelectedTicket}"
+                  Background="beige"
+                  BorderThickness="0">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="black"/>
+                                <Setter Property="Padding" Value="0,0,0,0"/>
+                                <Setter Property="FontFamily" Value="Montserrat"/>
+                                <Setter Property="FontSize" Value="15"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+   
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+            <ListBox
+                    Grid.Row="2"
+                    x:Name="TLUsers"
+                    d:DataContext="{d:DesignInstance {x:Type viewmodel:TicketsViewModel}}" 
+            ItemsSource="{Binding Path=DbTickets}"
+            SelectedItem="{Binding Path=SelectedTicket}"
+            Grid.RowSpan="6" 
+            Grid.Column="1"
+                    Grid.ColumnSpan="2"
+            HorizontalContentAlignment="Center" 
+            Margin="15,0,15,0" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                
+                                <TextBlock Text="{Binding}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Grid Grid.Row="9">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" x:Name="AddBtn" Content="Add" Command="{Binding Path=AddTicketCommand}" Margin="0,5,0,0" />
+                    <Button Grid.Column="1" x:Name="DelBtn" Content="Delete" Command="{Binding Path=DeleteTicketCommand}" Margin="0,5,0,0" />
+                    <Button Grid.Column="2" x:Name="ShowBtn" Content="Refresh Tickets" Command="{Binding Path=ShowTicketCommand}" Margin="0,5,0,0" Click="ShowBtn_Click" />
+                </Grid>
+            </Grid>
+          
+            <Grid>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                         
+                </Grid>-->
+        </Grid>
+    </Border>
 </UserControl>
