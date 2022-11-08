@@ -26,9 +26,5 @@ namespace SPLAT.MVVM.View
             DataContext = new TicketsViewModel();
             InitializeComponent();
         }
-        private void ShowBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

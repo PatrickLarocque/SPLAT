@@ -20,7 +20,7 @@ namespace SPLAT.MVVM.ViewModel
         private string _description;
         private string _user_id;
         private string _Name;
-        private DateTime _created;
+        private string _created;
         private TicketModel _selectedTicket;
         private List<TicketModel> _tickets = new List<TicketModel>();
         private List<string> _strTickets = new List<string>();
@@ -53,7 +53,7 @@ namespace SPLAT.MVVM.ViewModel
         }
 
 
-        public DateTime Created
+        public string Created
         {
             get => _created; set
             {
@@ -268,7 +268,7 @@ namespace SPLAT.MVVM.ViewModel
              User_id = string.Empty;
              newTicket.Name = Name;
              Name = string.Empty;
-             newTicket.Created = DateTime.Today;
+             newTicket.Created = DateTime.Today.Date.ToShortDateString();
 
 
             await FBClient.Child("Tickets").PostAsync(newTicket,false);
@@ -287,7 +287,7 @@ namespace SPLAT.MVVM.ViewModel
 
 
 
-        DateTime selectedTicketEditDate;
+        string selectedTicketEditDate;
         String selectedKey;
         public async void EditTicket()
         {
@@ -318,9 +318,9 @@ namespace SPLAT.MVVM.ViewModel
             Name = string.Empty;
             existTicket.Created = selectedTicketEditDate;
 
-            await FBClient
-                 .Child("Tickets").Child(selectedKey)
-                 .DeleteAsync();
+            //await FBClient
+              //   .Child("Tickets").Child(selectedKey)
+                // .DeleteAsync();
             await FBClient.Child("Tickets").Child(selectedKey).PutAsync(existTicket);
             GetTickets();            
      
@@ -359,7 +359,7 @@ namespace SPLAT.MVVM.ViewModel
                     });
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             { }
         }
         public void Window_ContentRendered(object sender, EventArgs e)
