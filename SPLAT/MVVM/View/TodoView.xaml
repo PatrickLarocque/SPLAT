@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="SPLAT.MVVM.View.TodoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SPLAT.MVVM.View"
+             xmlns:viewmodels="clr-namespace:SPLAT.MVVM.ViewModel"  d:DataContext="{d:DesignInstance Type=viewmodels:TodoViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Background="#212936"
+            CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock Text="https://jsonplaceholder.typicode.com/todos"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Border BorderThickness="0" BorderBrush="Bisque">
+                    <TextBlock Text="TASKS"
+                       Foreground="#C1C1C1"
+                       Height="48"
+                       FontSize="28"
+                       HorizontalAlignment="Left"
+                       Margin="10,0,0,0"/>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Border BorderThickness="0">
+
+                    <StackPanel>
+                        <TextBlock Text="Tasks from Project Management API" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="DarkGray" FontSize="23"/>
+                        <DataGrid x:Name="Todo" ItemsSource="{Binding Todo}" CanUserAddRows=" false" ColumnWidth="*" AutoGenerateColumns="False"
+                  Background="white"
+                  BorderThickness="1" MaxWidth="800">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="#f0f0a3"/>
+                                    <Setter Property="Foreground" Value="black"/>
+                                    <Setter Property="Padding" Value="10,0,0,10"/>
+                                    <Setter Property="FontFamily" Value="Montserrat"/>
+                                    <Setter Property="FontSize" Value="15"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Task Id" MaxWidth="60"/>
+                                <DataGridTextColumn Binding="{Binding UserId}" ClipboardContentBinding="{x:Null}" Header="UserId" MaxWidth="80"/>
+                                <DataGridTextColumn Binding="{Binding Title}" ClipboardContentBinding="{x:Null}" Header="Title"/>
+                                <DataGridCheckBoxColumn Header="Completed" Binding="{Binding Completed}" MaxWidth="90"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+
+
+
+        </Grid>
+        </Border>
+</UserControl>

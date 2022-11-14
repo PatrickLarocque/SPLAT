@@ -63,6 +63,11 @@
     <Compile Include="Extensions\FirebaseAuthenticationSDKHostBuilder.cs" />
     <Compile Include="Http\FirebaseAPIKeyHttpMessageHandler.cs" />
     <Compile Include="MVVM\Models\TicketModel.cs" />
+    <Compile Include="MVVM\Models\Todo.cs" />
+    <Compile Include="MVVM\ViewModel\TodoViewModel.cs" />
+    <Compile Include="MVVM\View\TodoView.xaml.cs">
+      <DependentUpon>TodoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Requests\LoginRequest.cs" />
     <Compile Include="Requests\RefreshRequest.cs" />
     <Compile Include="Requests\RegistrationRequest.cs" />
@@ -106,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\TicketsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\TodoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +175,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Caliburn.Micro">
+      <Version>4.0.212</Version>
+    </PackageReference>
     <PackageReference Include="FirebaseDatabase.net">
       <Version>4.1.0</Version>
     </PackageReference>

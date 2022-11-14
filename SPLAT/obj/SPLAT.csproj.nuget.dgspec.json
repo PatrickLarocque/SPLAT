@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Carolina\\Desktop\\VERIFIEDNov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj": {}
+    "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\SPLAT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Carolina\\Desktop\\VERIFIEDNov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj": {
+    "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\SPLAT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\VERIFIEDNov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj",
+        "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\SPLAT.csproj",
         "projectName": "SPLAT",
-        "projectPath": "C:\\Users\\Carolina\\Desktop\\VERIFIEDNov4Patrick\\SPLAT\\SPLAT\\SPLAT.csproj",
+        "projectPath": "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\SPLAT.csproj",
         "packagesPath": "C:\\Users\\Carolina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Carolina\\Desktop\\VERIFIEDNov4Patrick\\SPLAT\\SPLAT\\obj\\",
+        "outputPath": "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -38,6 +38,10 @@
       "frameworks": {
         "net48": {
           "dependencies": {
+            "Caliburn.Micro": {
+              "target": "Package",
+              "version": "[4.0.212, )"
+            },
             "FireSharp": {
               "target": "Package",
               "version": "[2.0.4, )"

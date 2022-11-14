@@ -138,7 +138,8 @@
                     <RadioButton Content="Tasks"
                                  Height="40"
                                  FontSize="16"
-                                 Style="{StaticResource NavBarButton}"/>
+                                 Style="{StaticResource NavBarButton}"
+                                 Command="{Binding TodoViewCommand}"/>
 
                     <RadioButton Content="Tickets"
                                  Height="40"

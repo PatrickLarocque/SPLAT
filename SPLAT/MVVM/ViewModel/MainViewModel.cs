@@ -13,7 +13,14 @@ namespace SPLAT.MVVM.ViewModel
 
         public RelayCommand DashboardViewCommand { get; set; }
         public RelayCommand TicketsViewCommand { get; set; }
+
+        public RelayCommand TodoViewCommand { get; set; }
+
+
         public DashboardViewModel DashboardViewModel { get; set; }
+
+
+        public TodoViewModel TodoViewModel { get; set; }
 
         public TicketsViewModel TicketsViewModel { get; set; }
 
@@ -31,7 +38,11 @@ namespace SPLAT.MVVM.ViewModel
         public MainViewModel()
         {
             DashboardViewModel = new DashboardViewModel();
+
             TicketsViewModel = new TicketsViewModel();
+
+            TodoViewModel = new TodoViewModel();
+
             CurrentView = DashboardViewModel;
 
             DashboardViewCommand = new RelayCommand(o =>
@@ -43,6 +54,12 @@ namespace SPLAT.MVVM.ViewModel
             {
                 CurrentView = TicketsViewModel;
             });
+
+            TodoViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = TodoViewModel;
+            });
+
 
         }
 
