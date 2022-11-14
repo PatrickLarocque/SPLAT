@@ -11,7 +11,7 @@
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" >
+                <ColumnDefinition Width="385" >
               
                 </ColumnDefinition>
                 <ColumnDefinition Width="*"/>
@@ -244,7 +244,7 @@
                               d:DataContext="{d:DesignInstance {x:Type viewmodel:TicketsViewModel}}" 
             ItemsSource="{Binding Path=DbTickets}"
             SelectedItem="{Binding Path=SelectedTicket}"
-                  Background="Transparent"
+                  Background="Transparent" AutoGenerateColumns="False"
                       >
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
@@ -256,8 +256,12 @@
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
                  <DataGrid.Columns>
-
-                </DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding User_id}" ClipboardContentBinding="{x:Null}" Header="UserID" MaxWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name" MaxWidth="60"/>
+                    <DataGridTextColumn Binding="{Binding Title}" ClipboardContentBinding="{x:Null}" Header="Title" MaxWidth="90"/>
+                    <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Description"/>
+                    <DataGridTextColumn Binding="{Binding Created}" ClipboardContentBinding="{x:Null}" Header="Created" MaxWidth="95" />
+                     </DataGrid.Columns>
             </DataGrid>
 
 

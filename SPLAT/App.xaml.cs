@@ -29,8 +29,16 @@ namespace SPLAT
             var loginView = new LoginView();
             loginView.Show();
 
+
         }
 
     }
 
 }
+/*
+ * 
+ *    var loginView = new LoginView();
+            loginView.Show();
+ *   var registerView = new RegisterView();
+            registerView.Show();
+ */

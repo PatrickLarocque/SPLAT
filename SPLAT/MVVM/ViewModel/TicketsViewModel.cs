@@ -11,6 +11,7 @@ using System.Windows;
 using FireSharp.Config;
 using Firebase.Database;
 using Firebase.Database.Query;
+using System.Net.Http;
 
 namespace SPLAT.MVVM.ViewModel
 {
@@ -368,3 +369,49 @@ namespace SPLAT.MVVM.ViewModel
         }
     }
 }
+
+
+/* public static async Task<QuestionModel> LoadStackOverflowQuestion()
+ {
+
+     string currentTags = QuestionModel.inputTags;
+     string URL = $"https://api.stackexchange.com/2.3/questions?order=desc&sort={currentTags}activity&tagged=&site=stackoverflow";
+
+     using (HttpResponseMessage response = await APIHelper.APIClient.GetAsync(URL))
+     {
+         if (response.IsSuccessStatusCode)
+         {
+             QuestionModel questions = await response.Content.ReadAsStreamAsync<Qust
+
+             re
+             return questions;
+         }
+         else
+         {
+             throw new Exception(response.ReasonPhrase);
+         }
+     }
+ }*/
+
+
+
+
+
+
+/*
+ * private async Task GetTodos()
+        {
+            using (var httpClient = new HttpClient())
+            {
+
+                var todosJson = await httpClient.GetStringAsync("https://jsonplaceholder.typicode.com/todos");
+                var todoItems = JsonConvert.DeserializeObject<Todo[]>(todosJson);
+                foreach (var item in todoItems)
+                {
+                    Todo.Add(item);
+                }
+            }
+        }
+
+ * 
+ * */

@@ -391,3 +391,4 @@ C:\Users\Carolina\Desktop\SUNDAY NIGHT SPLAT\Try AGAIN\SPLAT\SPLAT\obj\Debug\SPL
 C:\Users\Carolina\Desktop\SUNDAY NIGHT SPLAT\Try AGAIN\SPLAT\SPLAT\obj\Debug\SPLAT.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Carolina\Desktop\SUNDAY NIGHT SPLAT\Try AGAIN\SPLAT\SPLAT\obj\Debug\SPLAT.csproj.CoreCompileInputs.cache
 C:\Users\Carolina\Desktop\SUNDAY NIGHT SPLAT\Try AGAIN\SPLAT\SPLAT\obj\Debug\SPLAT.csproj.CopyComplete
+C:\Users\Carolina\Desktop\SUNDAY NIGHT SPLAT\Try AGAIN\SPLAT\SPLAT\bin\Debug\Firebase.Auth.dll

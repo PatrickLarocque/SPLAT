@@ -40,18 +40,19 @@
                   BorderThickness="1" MaxWidth="800">
                             <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
-                                    <Setter Property="Background" Value="#f0f0a3"/>
+                                    <Setter Property="Background" Value="DimGray"/>
                                     <Setter Property="Foreground" Value="black"/>
                                     <Setter Property="Padding" Value="10,0,0,10"/>
                                     <Setter Property="FontFamily" Value="Montserrat"/>
-                                    <Setter Property="FontSize" Value="15"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
                                 </Style>
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Task Id" MaxWidth="60"/>
-                                <DataGridTextColumn Binding="{Binding UserId}" ClipboardContentBinding="{x:Null}" Header="UserId" MaxWidth="80"/>
+                                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Task Id" MaxWidth="80"/>
+                                <DataGridTextColumn Binding="{Binding UserId}" ClipboardContentBinding="{x:Null}" Header="UserId" MaxWidth="90"/>
                                 <DataGridTextColumn Binding="{Binding Title}" ClipboardContentBinding="{x:Null}" Header="Title"/>
-                                <DataGridCheckBoxColumn Header="Completed" Binding="{Binding Completed}" MaxWidth="90"/>
+                                <DataGridCheckBoxColumn Header="Completed" Binding="{Binding Completed}" MaxWidth="115"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

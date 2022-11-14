@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SPLAT.MVVM.View" xmlns:customcontrols="clr-namespace:SPLAT.CustomControls" xmlns:viewmodel="clr-namespace:SPLAT.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+        xmlns:local="clr-namespace:SPLAT.MVVM.View" xmlns:customcontrols="clr-namespace:SPLAT.CustomControls" xmlns:viewmodel="clr-namespace:SPLAT.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:RegisterViewModel}"
         mc:Ignorable="d"
         Title="Registration" Height="550" Width="800"
         WindowStyle="None"
@@ -181,8 +181,8 @@
                     Password="{Binding ConfirmPassword, UpdateSourceTrigger=PropertyChanged}">
                 </customcontrols:BindablePasswordBox>
 
-                <Button x:Name="btnLogin"
-                        Command="{Binding SubmitCommand}"
+                <Button x:Name="regBtn"
+                        Command="{Binding RegisterCommand}"
                         BorderThickness="0"
                         Content="Register"
                         Foreground="White"

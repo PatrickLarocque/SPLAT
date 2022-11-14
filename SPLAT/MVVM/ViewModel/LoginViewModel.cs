@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Firebase.Auth;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Refit;
 using SPLAT.Core;
@@ -16,8 +17,11 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using LoginView = SPLAT.MVVM.View.LoginView;
+using MessageBox = System.Windows.MessageBox;
 
 namespace SPLAT.MVVM.ViewModel
 {
@@ -42,14 +46,40 @@ namespace SPLAT.MVVM.ViewModel
         public ICommand RecoverPasswordCommand { get; }
         public ICommand ShowPasswordCommand { get; }
         public ICommand RememberPasswordCommand { get; }
-
+	public ICommand RegisterCommand { get; }
         //Constructor
 
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new RelayCommand(p => ExecuteRecoverPassCommand("",""));
+	        RegisterCommand =  new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
         }
+  private bool CanExecuteRegisterCommand(object arg)
+        {
+            bool validData;
+            if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3 || Password == null || Password.Length < 3)
+                validData = false;
+            else
+                validData = true;
+            return validData;
+
+        }
+        private void ExecuteRegisterCommand(object obj)
+        {
+            try
+            {
+                _ = RegisterWithFirebaseAlternative();
+            
+            }
+            catch (ApiException ex)
+            {
+            }
+            
+
+        }
+
+
         private bool CanExecuteLoginCommand(object arg)
         {
             bool validData;
@@ -64,12 +94,8 @@ namespace SPLAT.MVVM.ViewModel
         {
             try
             {
-                _ = LoginWithFirebase();
-                IsVisible = false;
-                var loginView = new LoginView();
-                var mainWindow = new MainWindow();
-                mainWindow.Show();
-                loginView.Close();
+                _ = LoginWithFirebaseAlternative();
+            
             }
             catch (ApiException ex)
             {
@@ -149,5 +175,46 @@ namespace SPLAT.MVVM.ViewModel
                 await ex.GetContentAsAsync<string>();
             }
         }
+        public async Task LoginWithFirebaseAlternative()
+        {
+            try
+            {
+                var auth = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
+                var a = await auth.SignInWithEmailAndPasswordAsync(Email, Password);
+                string token = a.FirebaseToken;
+                var user = a.User;
+                if (token != "")
+                {
+                    IsVisible = false;
+                    var loginView = new LoginView();
+                    var mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    loginView.Close();
+                }
+            }
+            catch (Exception ex) { }
+        }
+            public async Task RegisterWithFirebaseAlternative()
+        {
+            try
+            {
+                var auth = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
+                var a = await auth.CreateUserWithEmailAndPasswordAsync(Email, Password);
+                string token = a.FirebaseToken;
+                var user = a.User;
+                if (token != "")
+                {
+                 }
+                MessageBox.Show("Successfully registered!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex) { }
+        }
+
+
+
+
+
+
+
     }
 }
