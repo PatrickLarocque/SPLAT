@@ -54,8 +54,38 @@ namespace SPLAT.MVVM.ViewModel
             LoginCommand = new RelayCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new RelayCommand(p => ExecuteRecoverPassCommand("",""));
 	        RegisterCommand =  new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
+            RestEmailCommand = new RelayCommand(ExecuteResetEmail, CanExecuteResetCommand);
         }
-  private bool CanExecuteRegisterCommand(object arg)
+
+        private bool CanExecuteResetCommand(object arg)
+        {
+            {
+                bool validData;
+                if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3)
+                {
+                 validData = false;
+                }
+
+                else
+                    validData = true;
+                return validData;
+
+            }
+        }
+
+        private void ExecuteResetEmail(object obj)
+        {
+            try
+            {
+                _ = ResetEmail();
+
+            }
+            catch (ApiException ex)
+            {
+            }
+        }
+
+        private bool CanExecuteRegisterCommand(object arg)
         {
             bool validData;
             if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3 || Password == null || Password.Length < 3)
@@ -84,7 +114,7 @@ namespace SPLAT.MVVM.ViewModel
         {
             bool validData;
             if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3 || Password == null || Password.Length < 3)
-                validData = false;
+                validData = false; 
             else
                 validData = true;
             return validData;
@@ -191,6 +221,10 @@ namespace SPLAT.MVVM.ViewModel
                     mainWindow.Show();
                     loginView.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Login unsuccessfull! Please try again", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (Exception ex) { }
         }
@@ -212,8 +246,22 @@ namespace SPLAT.MVVM.ViewModel
 
 
 
+        public ICommand RestEmailCommand
+        { get ;
+            
+        }
 
+        private async Task ResetEmail()
+        {
+            try
+            {
+                var auth = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
+                await auth.SendPasswordResetEmailAsync(Email);
 
+                MessageBox.Show("A password reset option has been sent to " + Email, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex) { }
+        }
 
 
     }
