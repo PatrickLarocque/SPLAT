@@ -257,6 +257,7 @@ namespace SPLAT.MVVM.ViewModel
             {
                 var auth = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
                 await auth.SendPasswordResetEmailAsync(Email);
+           
 
                 MessageBox.Show("A password reset option has been sent to " + Email, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }

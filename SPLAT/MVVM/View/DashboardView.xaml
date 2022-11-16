@@ -42,6 +42,9 @@
                                        Foreground="White"
                                        FontSize="18"
                                        Margin="20,10,10,0" />
+                           
+                            <CheckBox Content="CheckBox"/>
+
                         </StackPanel>
                     </Grid>
                     
@@ -56,6 +59,7 @@
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#ffd554" Offset="0.0"/>
                             <GradientStop Color="#ffa73a" Offset="1"/>
+
                         </LinearGradientBrush>
                     </Border.Background>
 
