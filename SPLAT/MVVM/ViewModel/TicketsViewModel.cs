@@ -246,6 +246,7 @@ namespace SPLAT.MVVM.ViewModel
                 try
                 {
                     _fbclient = new FirebaseClient("https://splattest-68d44-default-rtdb.firebaseio.com/");
+                    GetTickets();
                 }
                 catch
                 {

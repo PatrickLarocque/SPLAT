@@ -259,7 +259,7 @@
                     <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name" MaxWidth="60"/>
                     <DataGridTextColumn Binding="{Binding Title}" ClipboardContentBinding="{x:Null}" Header="Title" MaxWidth="90"/>
                     <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Description"/>
-                    <DataGridTextColumn Binding="{Binding Created}" ClipboardContentBinding="{x:Null}" Header="Created" MaxWidth="95" />
+                    <DataGridTextColumn Binding="{Binding Created.Date}" ClipboardContentBinding="{x:Null}" Header="Created" MaxWidth="95" />
                      </DataGrid.Columns>
             </DataGrid>
 

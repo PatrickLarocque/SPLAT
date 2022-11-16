@@ -113,9 +113,6 @@
                      Margin="50,5,5,5"
                      Style="{StaticResource SearchBar}"/>
 
-
-
-
             <Grid Grid.Row="2"  Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="65"/>
