@@ -92,6 +92,56 @@
           }
         }
       },
+      "Google.Apis/1.57.0": {
+        "dependencies": {
+          "Google.Apis.Core": "1.57.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.dll": {
+            "assemblyVersion": "1.57.0.0",
+            "fileVersion": "1.57.0.0"
+          }
+        }
+      },
+      "Google.Apis.Auth/1.57.0": {
+        "dependencies": {
+          "Google.Apis": "1.57.0",
+          "Google.Apis.Core": "1.57.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {
+            "assemblyVersion": "1.57.0.0",
+            "fileVersion": "1.57.0.0"
+          },
+          "lib/netstandard2.0/Google.Apis.Auth.dll": {
+            "assemblyVersion": "1.57.0.0",
+            "fileVersion": "1.57.0.0"
+          }
+        }
+      },
+      "Google.Apis.Core/1.57.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {
+            "assemblyVersion": "1.57.0.0",
+            "fileVersion": "1.57.0.0"
+          }
+        }
+      },
+      "Google.Apis.Gmail.v1/1.57.0.2650": {
+        "dependencies": {
+          "Google.Apis": "1.57.0",
+          "Google.Apis.Auth": "1.57.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Gmail.v1.dll": {
+            "assemblyVersion": "1.57.0.2650",
+            "fileVersion": "1.57.0.2650"
+          }
+        }
+      },
       "LiteDB/4.1.4": {
         "dependencies": {
           "System.Reflection": "4.3.0",
@@ -1581,6 +1631,8 @@
           "FirebaseAuthentication.net": "3.7.2",
           "FirebaseDatabase.net": "4.1.0",
           "FontAwesome.WPF": "4.7.0.9",
+          "Google.Apis.Auth": "1.57.0",
+          "Google.Apis.Gmail.v1": "1.57.0.2650",
           "Microsoft.Extensions.Hosting": "6.0.1",
           "Microsoft.Extensions.Http": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -1649,6 +1701,34 @@
       "sha512": "sha512-SXE080rnyWMm9Dt0BZzMxh89/o9teuSaqL1N+0O/XM/F/HU8JuZA4XaEKxjBigwZPHHU3/udTa0QMYCHkmH43Q==",
       "path": "fontawesome.wpf/4.7.0.9",
       "hashPath": "fontawesome.wpf.4.7.0.9.nupkg.sha512"
+    },
+    "Google.Apis/1.57.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-30V7T2G98HQjfI6y0AzBOXJUu7j7Trl1ZzH0e6DKmUaXNCvdMPwxApjBKESeTOkWjMdFRmkpAGyDEoxim+Xq1A==",
+      "path": "google.apis/1.57.0",
+      "hashPath": "google.apis.1.57.0.nupkg.sha512"
+    },
+    "Google.Apis.Auth/1.57.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xNY9rprn3iih1H5dymbxxHeZggn4bMYKtYdwO3Yr+Cj06f6xrxnL0LqEi1bmG46LBY2FlVMy9NKIF99tZ6ZBZg==",
+      "path": "google.apis.auth/1.57.0",
+      "hashPath": "google.apis.auth.1.57.0.nupkg.sha512"
+    },
+    "Google.Apis.Core/1.57.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5wuY88PewhfaWsk37EEHcwU6CFqxpaWMm20ogWLXmaCw8NbTlV/Lna0gjtr2jpTLgb3mtVa7RC1AG/mgi530SQ==",
+      "path": "google.apis.core/1.57.0",
+      "hashPath": "google.apis.core.1.57.0.nupkg.sha512"
+    },
+    "Google.Apis.Gmail.v1/1.57.0.2650": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KylGtcyD3Miuhcx9kJwJHQqIxnK37HtpVb3vBn/nZpz9ofdjc0BLFXfv2lbovw6js+PXt7A2J0Q12UooSfqOcw==",
+      "path": "google.apis.gmail.v1/1.57.0.2650",
+      "hashPath": "google.apis.gmail.v1.1.57.0.2650.nupkg.sha512"
     },
     "LiteDB/4.1.4": {
       "type": "package",

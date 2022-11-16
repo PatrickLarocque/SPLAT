@@ -485,3 +485,13 @@ C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\obj\Debug\SPLAT.csproj.CopyComplete
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\obj\Debug\SPLAT.exe
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\obj\Debug\SPLAT.pdb
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.PlatformServices.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.pdb
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.Auth.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.Core.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.Core.pdb
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.Gmail.v1.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\SPLAT\SPLAT\bin\Debug\Google.Apis.Gmail.v1.pdb

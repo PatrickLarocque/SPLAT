@@ -1,4 +1,8 @@
 ﻿using Firebase.Auth;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Gmail.v1;
+using Google.Apis.Services;
+using Google.Apis.Util;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Refit;
@@ -15,6 +19,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows;
@@ -46,18 +51,35 @@ namespace SPLAT.MVVM.ViewModel
         public ICommand RecoverPasswordCommand { get; }
         public ICommand ShowPasswordCommand { get; }
         public ICommand RememberPasswordCommand { get; }
-	    public ICommand RegisterCommand { get; }
+        public ICommand RegisterCommand { get; }
         public ICommand ToRegisterViewCommand { get; }
+
+        public ICommand LoginWithGoogleCommand { get; }
 
         //Constructor
 
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
-            RecoverPasswordCommand = new RelayCommand(p => ExecuteRecoverPassCommand("",""));
-	        RegisterCommand =  new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
+            RecoverPasswordCommand = new RelayCommand(p => ExecuteRecoverPassCommand("", ""));
+            RegisterCommand = new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
             RestEmailCommand = new RelayCommand(ExecuteResetEmail, CanExecuteResetCommand);
             ToRegisterViewCommand = new RelayCommand(ExecuteToRegisterViewCommand);
+            LoginWithGoogleCommand = new RelayCommand(ExecuteLoginWithGoogleCommand);
+        }
+
+        private void ExecuteLoginWithGoogleCommand(object obj)
+        {
+            try
+            {
+                LoginWithGoogle();
+
+            }
+            catch (ApiException ex)
+            {
+            }
+
+
         }
 
         private void ExecuteToRegisterViewCommand(object obj)
@@ -73,7 +95,7 @@ namespace SPLAT.MVVM.ViewModel
                 bool validData;
                 if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3)
                 {
-                 validData = false;
+                    validData = false;
                 }
 
                 else
@@ -110,12 +132,12 @@ namespace SPLAT.MVVM.ViewModel
             try
             {
                 _ = RegisterWithFirebaseAlternative();
-            
+
             }
             catch (ApiException ex)
             {
             }
-            
+
 
         }
 
@@ -124,7 +146,7 @@ namespace SPLAT.MVVM.ViewModel
         {
             bool validData;
             if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3 || Password == null || Password.Length < 3)
-                validData = false; 
+                validData = false;
             else
                 validData = true;
             return validData;
@@ -135,12 +157,12 @@ namespace SPLAT.MVVM.ViewModel
             try
             {
                 _ = LoginWithFirebaseAlternative();
-            
+
             }
             catch (ApiException ex)
             {
             }
-            
+
 
         }
 
@@ -238,7 +260,7 @@ namespace SPLAT.MVVM.ViewModel
             }
             catch (Exception ex) { }
         }
-            public async Task RegisterWithFirebaseAlternative()
+        public async Task RegisterWithFirebaseAlternative()
         {
             try
             {
@@ -248,7 +270,7 @@ namespace SPLAT.MVVM.ViewModel
                 var user = a.User;
                 if (token != "")
                 {
-                 }
+                }
                 MessageBox.Show("Successfully registered!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) { }
@@ -257,8 +279,8 @@ namespace SPLAT.MVVM.ViewModel
 
 
         public ICommand RestEmailCommand
-        { get ;
-            
+        { get;
+
         }
 
         private async Task ResetEmail()
@@ -267,7 +289,7 @@ namespace SPLAT.MVVM.ViewModel
             {
                 var auth = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
                 await auth.SendPasswordResetEmailAsync(Email);
-           
+
 
                 MessageBox.Show("A password reset option has been sent to " + Email, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -275,5 +297,29 @@ namespace SPLAT.MVVM.ViewModel
         }
 
 
+        string clientID = "123648363985-niu7pmjinpll61fh45nddd2molc40u5v.apps.googleusercontent.com";
+        string clientSecret = "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";
+
+        string[] scopes = { "https://googleapis.com/auth/gmail.readonly" };
+       
+        public void LoginWithGoogle()
+        {
+            var credentials = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                new ClientSecrets
+                {
+                    ClientId = clientID,
+                    ClientSecret = clientSecret,
+                },
+                scopes, "user", CancellationToken.None).Result;
+
+            if (credentials.Token.IsExpired(SystemClock.Default))
+                credentials.RefreshTokenAsync(CancellationToken.None).Wait();
+
+            var service = new GmailService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = credentials
+            });
+
+        }
     }
 }

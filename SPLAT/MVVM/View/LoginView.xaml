@@ -207,10 +207,10 @@
                         </Button.Template>
                     </Button>
 
-                    <Button x:Name="btnRegister"
-                        Command="{Binding RegisterCommand}"
+                    <Button x:Name="btnLoginWithGoogle"
+                            Command="{Binding ExecuteLoginWithGoogleCommand}"
                         BorderThickness="0"
-                        Content="Register"
+                        Content="Login with Google"
                         Foreground="White"
                         FontSize="16"
                         FontFamily="Montserrat"
