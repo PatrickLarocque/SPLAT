@@ -10753,24 +10753,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Carolina\\.nuget\\packages\\": {},
+    "C:\\Users\\Patrick Larocque\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\SPLAT.csproj",
+      "projectUniqueName": "C:\\Users\\Patrick Larocque\\OneDrive\\Documents\\GitHub\\Red_Team_Systems_Development\\SPLAT\\SPLAT\\SPLAT.csproj",
       "projectName": "SPLAT",
-      "projectPath": "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\SPLAT.csproj",
-      "packagesPath": "C:\\Users\\Carolina\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Carolina\\Desktop\\SUNDAY NIGHT SPLAT\\Try AGAIN\\SPLAT\\SPLAT\\obj\\",
+      "projectPath": "C:\\Users\\Patrick Larocque\\OneDrive\\Documents\\GitHub\\Red_Team_Systems_Development\\SPLAT\\SPLAT\\SPLAT.csproj",
+      "packagesPath": "C:\\Users\\Patrick Larocque\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Patrick Larocque\\OneDrive\\Documents\\GitHub\\Red_Team_Systems_Development\\SPLAT\\SPLAT\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Carolina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Patrick Larocque\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using FirebaseConfig = Firebase.Auth.FirebaseConfig;
 
@@ -25,20 +26,51 @@ namespace SPLAT.MVVM.ViewModel
         private string _email;
         private string _password;
         private string _errorMessage;
+        private string _confirmPassword;
         private bool _isViewVisible = true;
 
 
         //properties
-        public string Email { get => _email; set { _email = value; OnPropertyChanged("Email"); } }
-        public string Password { get => _password; set { _password = value; OnPropertyChanged("Password"); } }
+        public string Email { get => _email; set { _email = value; OnPropertyChanged(nameof(Email)); } }
+        public string Password { get => _password; set { _password = value; OnPropertyChanged(nameof(Password)); } }
+
+        public string ConfirmPassword { get => _confirmPassword; set { _confirmPassword = value; OnPropertyChanged(nameof(ConfirmPassword)); } }
         public string ErrorMessage { get => _errorMessage; set { _errorMessage = value; OnPropertyChanged(nameof(ErrorMessage)); } }
         public bool IsVisible { get => _isViewVisible; set { _isViewVisible = value; OnPropertyChanged(nameof(IsVisible)); } }
 
+        public ICommand RegisterCommand { get; }
+        public ICommand ToLogInViewCommand { get; }
 
         public RegisterViewModel()
         {
-            RegisterCommand = new RelayCommand(ExecuteRegister);
- 
+            RegisterCommand = new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
+            ToLogInViewCommand = new RelayCommand(ExecuteToLogInViewCommand);
+
+        }
+
+        private bool CanExecuteRegisterCommand(object arg)
+        {
+            bool validData;
+            if (string.IsNullOrWhiteSpace(Email) || Email.Length < 3 || Password == null || Password.Length < 6 || Password != ConfirmPassword)
+                validData = false;
+            else
+                validData = true;
+            return validData;
+
+        }
+
+        private void ExecuteToLogInViewCommand(object obj)
+        {
+            var loginView = new LoginView();
+            loginView.Show();
+            IsVisible = false;
+
+        }
+
+        private void ExecuteRegisterCommand(object obj)
+        {
+            _ = RegisterWithFirebase();
+            MessageBox.Show("Registration sucessful, please login");
         }
 
         private void ExecuteRegister(object obj)
@@ -75,10 +107,7 @@ namespace SPLAT.MVVM.ViewModel
             }
         }
 
-        public ICommand RegisterCommand
-        {
-            get;
-            }
+
         public async Task RegisterWithFirebaseAlternative()
         {
             try
@@ -91,8 +120,6 @@ namespace SPLAT.MVVM.ViewModel
                 {
 
                 }
-                
-
 
             }
             catch (Exception ex) { }

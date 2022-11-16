@@ -241,7 +241,6 @@ namespace SPLAT.MVVM.ViewModel
 
         public TicketsViewModel()
         {
-            Task.Run(() => GetTickets());
             {
                 try
                 {

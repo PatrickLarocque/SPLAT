@@ -46,7 +46,9 @@ namespace SPLAT.MVVM.ViewModel
         public ICommand RecoverPasswordCommand { get; }
         public ICommand ShowPasswordCommand { get; }
         public ICommand RememberPasswordCommand { get; }
-	public ICommand RegisterCommand { get; }
+	    public ICommand RegisterCommand { get; }
+        public ICommand ToRegisterViewCommand { get; }
+
         //Constructor
 
         public LoginViewModel()
@@ -55,6 +57,14 @@ namespace SPLAT.MVVM.ViewModel
             RecoverPasswordCommand = new RelayCommand(p => ExecuteRecoverPassCommand("",""));
 	        RegisterCommand =  new RelayCommand(ExecuteRegisterCommand, CanExecuteRegisterCommand);
             RestEmailCommand = new RelayCommand(ExecuteResetEmail, CanExecuteResetCommand);
+            ToRegisterViewCommand = new RelayCommand(ExecuteToRegisterViewCommand);
+        }
+
+        private void ExecuteToRegisterViewCommand(object obj)
+        {
+            IsVisible = false;
+            var registerView = new RegisterView();
+            registerView.Show();
         }
 
         private bool CanExecuteResetCommand(object arg)

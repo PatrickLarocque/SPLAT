@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SPLAT.MVVM.View" xmlns:customcontrols="clr-namespace:SPLAT.CustomControls" xmlns:viewmodel="clr-namespace:SPLAT.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:RegisterViewModel}"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:SPLAT.MVVM.View" 
+        xmlns:customcontrols="clr-namespace:SPLAT.CustomControls" 
+        xmlns:viewmodel="clr-namespace:SPLAT.MVVM.ViewModel"
         Title="Registration" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -13,6 +14,18 @@
         MouseDown="Window_MouseDown"
         AllowsTransparency="True"
         >
+
+    <Window.DataContext>
+        <viewmodel:RegisterViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </Window.Resources>
+
+    <Window.Visibility>
+        <Binding Path="IsVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
+    </Window.Visibility>
 
     <Border Background="#212936"
               CornerRadius="10">
@@ -132,28 +145,6 @@
                          CaretBrush="LightGray"
                          BorderBrush="DarkGray"
                          BorderThickness="0,0,0,3"
-                         />
-
-                <TextBlock Text="Username"
-                           Foreground="DarkGray"
-                           FontSize="15"
-                           FontWeight="Medium"
-                           FontFamily="Montserrat"
-                           HorizontalAlignment="Center"
-                           Margin="0,10,0,0"
-                           />
-                <TextBox x:Name="txtUser"
-                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
-                         Margin="60,0,60,0"
-                         Height="28"
-                         FontSize="13"
-                         FontWeight="Medium"
-                         FontFamily="Montserrat"
-                         Background="Transparent"
-                         Foreground="White"
-                         CaretBrush="LightGray"
-                         BorderBrush="DarkGray"
-                         BorderThickness="0,0,0,3" TextChanged="txtUser_TextChanged"
                          >
                 </TextBox>
                 <TextBlock Text="Password"
@@ -166,8 +157,9 @@
                            />
                 <customcontrols:BindablePasswordBox 
                     Height="28" Margin="60,0,60,0"
-                    Password="{Binding Password, UpdateSourceTrigger=PropertyChanged}">
+                    Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 </customcontrols:BindablePasswordBox>
+
                 <TextBlock Text="Confirm Password"
                            Foreground="DarkGray"
                            FontSize="15"
@@ -178,10 +170,11 @@
                            />
                 <customcontrols:BindablePasswordBox 
                     Height="28" Margin="60,0,60,0"
-                    Password="{Binding ConfirmPassword, UpdateSourceTrigger=PropertyChanged}">
+                    Password="{Binding ConfirmPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 </customcontrols:BindablePasswordBox>
 
-                <Button x:Name="regBtn"
+
+                <Button x:Name="btnRegister"
                         Command="{Binding RegisterCommand}"
                         BorderThickness="0"
                         Content="Register"
@@ -229,7 +222,7 @@
                            Margin="8,0,0,0"
                            Background="Transparent"
                            BorderBrush="Transparent"
-                            Command="{Binding NavigateLoginCommand}"
+                            Command="{Binding ToLogInViewCommand}"
                            />
                 </StackPanel>
             </StackPanel>
