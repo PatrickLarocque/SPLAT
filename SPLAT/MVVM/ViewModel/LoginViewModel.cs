@@ -310,7 +310,7 @@ namespace SPLAT.MVVM.ViewModel
                     ClientId = clientID,
                     ClientSecret = clientSecret,
                 },
-                scopes, "user", CancellationToken.None).Result;
+                scopes, "patricklarocque1@gmail.com", CancellationToken.None).Result;
 
             if (credentials.Token.IsExpired(SystemClock.Default))
                 credentials.RefreshTokenAsync(CancellationToken.None).Wait();
